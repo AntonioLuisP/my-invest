@@ -1,14 +1,4 @@
-// import useLocalStorage from "../../hooks/useLocalStorage"
-// import { useState, useEffect } from "react"
-
 export default function InvestimentTable({ investiments }) {
-  // const storage = useLocalStorage()
-  // const [investiments, setInvestiments] = useState([])
-
-  // useEffect(() => {
-  //   const dataFromStorage = storage.getItem("investiments")
-  //   if (dataFromStorage) setInvestiments(JSON.parse(dataFromStorage))
-  // }, [])
 
   return (
     <table>
