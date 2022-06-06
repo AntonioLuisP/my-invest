@@ -62,7 +62,17 @@ export default function InvestimentForm({ onAddInvestiment }) {
             onChange={e => setValorInvested(e.target.value)}
           />
         </div>
-        <button type="submit">Investir</button>
+        <button
+          type="submit"
+          style={{
+            padding: "8px",
+            backgroundColor: "green",
+            color: "white",
+            cursor: "pointer"
+          }}
+        >
+          Investir
+        </button>
       </form>
     </>
   )

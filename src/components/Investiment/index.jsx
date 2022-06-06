@@ -16,16 +16,29 @@ export default function Investiment() {
     storage.setItem("investiments", JSON.stringify(investiments))
   }, [investiments])
 
-  function handleNewInvestiment() {
+  function handleNewInvestiment(investiment) {
     setInvestiments(prevInvest => [investiment, ...prevInvest])
   }
 
+  function handleDeleteInvestiment(choosedKey) {
+    setInvestiments(prevInvest =>
+      prevInvest.filter((investiment, key) => key !== choosedKey)
+    )
+  }
+
+  function handleClearInvestiments() {
+    setInvestiments([])
+  }
   return (
     <>
       <InvestimentForm
         onAddInvestiment={investiment => handleNewInvestiment(investiment)}
       />
-      <InvestimentTable investiments={investiments} />
+      <InvestimentTable
+        investiments={investiments}
+        onDeleteInvestiment={key => handleDeleteInvestiment(key)}
+        onClearInvestiments={handleClearInvestiments}
+      />
     </>
   )
 }
