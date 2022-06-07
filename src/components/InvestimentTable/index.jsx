@@ -1,12 +1,22 @@
-export default function InvestimentTable({
-  investiments,
-  onDeleteInvestiment,
-  onClearInvestiments
-}) {
+import { useInvestiments } from "../../hooks/useInvestiments"
+
+export default function InvestimentTable() {
+  const [investiments, setInvestiments] = useInvestiments()
+
+  function handleCleatInvestiments() {
+    setInvestiments([])
+  }
+
+  function handleDeleteInvestiments(choosedKey) {
+    setInvestiments(prevInvest =>
+      prevInvest.filter((investiment, key) => key !== choosedKey)
+    )
+  }
+
   return (
     <>
       <button
-        onClick={onClearInvestiments}
+        onClick={handleCleatInvestiments}
         style={{
           padding: "8px",
           backgroundColor: "yellow",
@@ -33,7 +43,7 @@ export default function InvestimentTable({
               <td>{investiment.quantidade}</td>
               <td>
                 <button
-                  onClick={() => onDeleteInvestiment(key)}
+                  onClick={() => handleDeleteInvestiments(key)}
                   style={{
                     padding: "8px",
                     backgroundColor: "red",

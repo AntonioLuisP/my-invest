@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useInvestiments } from "../../hooks/useInvestiments"
 
-export default function InvestimentForm({ onAddInvestiment }) {
+export default function InvestimentForm() {
+  const [, setInvestiments] = useInvestiments()
+
   const [codAtivo, setCodAtivo] = useState("")
   const [quantidadeInvested, setQuantidadeInvested] = useState(1)
   const [valorInvested, setValorInvested] = useState(1)
@@ -16,11 +19,14 @@ export default function InvestimentForm({ onAddInvestiment }) {
     )
       return
 
-    onAddInvestiment({
-      codAtivo,
-      quantidade: quantidadeInvested,
-      valor: valorInvested
-    })
+    setInvestiments(prevInvests => [
+      {
+        codAtivo,
+        quantidade: quantidadeInvested,
+        valor: valorInvested
+      },
+      ...prevInvests
+    ])
 
     clearForm()
   }
