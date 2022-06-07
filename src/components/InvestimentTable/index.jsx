@@ -1,4 +1,5 @@
 import { useInvestiments } from "../../hooks/useInvestiments"
+import { Button } from "../Button"
 
 export default function InvestimentTable() {
   const [investiments, setInvestiments] = useInvestiments()
@@ -15,17 +16,13 @@ export default function InvestimentTable() {
 
   return (
     <>
-      <button
+      <Button
         onClick={handleCleatInvestiments}
-        style={{
-          padding: "8px",
-          backgroundColor: "yellow",
-          color: "black",
-          cursor: "pointer"
-        }}
+        backgroundColor={"yellow"}
+        color={"black"}
       >
         Limpar Investimentos
-      </button>
+      </Button>
       <table>
         <thead>
           <tr>
@@ -36,26 +33,26 @@ export default function InvestimentTable() {
           </tr>
         </thead>
         <tbody>
-          {investiments.map((investiment, key) => (
-            <tr key={key}>
-              <td>{investiment.valor}</td>
-              <td>{investiment.codAtivo}</td>
-              <td>{investiment.quantidade}</td>
-              <td>
-                <button
-                  onClick={() => handleDeleteInvestiments(key)}
-                  style={{
-                    padding: "8px",
-                    backgroundColor: "red",
-                    color: "white",
-                    cursor: "pointer"
-                  }}
-                >
-                  Apagar
-                </button>
-              </td>
-            </tr>
-          ))}
+          {investiments.length > 0 ? (
+            investiments.map((investiment, key) => (
+              <tr key={key}>
+                <td>{investiment.valor}</td>
+                <td>{investiment.codAtivo}</td>
+                <td>{investiment.quantidade}</td>
+                <td>
+                  <Button
+                    onClick={() => handleDeleteInvestiments(key)}
+                    backgroundColor="red"
+                    color="white"
+                  >
+                    Apagar
+                  </Button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>Nenhum investimento cadastrado</tr>
+          )}
         </tbody>
       </table>
     </>

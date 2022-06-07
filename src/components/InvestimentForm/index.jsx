@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useInvestiments } from "../../hooks/useInvestiments"
+import { Button } from "../Button"
 
 export default function InvestimentForm() {
   const [, setInvestiments] = useInvestiments()
@@ -68,17 +69,9 @@ export default function InvestimentForm() {
             onChange={e => setValorInvested(e.target.value)}
           />
         </div>
-        <button
-          type="submit"
-          style={{
-            padding: "8px",
-            backgroundColor: "green",
-            color: "white",
-            cursor: "pointer"
-          }}
-        >
+        <Button type="submit" backgroundColor={"green"} color={"white"}>
           Investir
-        </button>
+        </Button>
       </form>
     </>
   )
