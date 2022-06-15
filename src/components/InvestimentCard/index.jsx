@@ -1,7 +1,7 @@
 import { useInvestiments } from "../../hooks/useInvestiments"
 import { Button } from "../Button"
 
-export default function InvestimentTable() {
+export default function InvestimentCard() {
   const [investiments, setInvestiments] = useInvestiments()
 
   function handleCleatInvestiments() {
