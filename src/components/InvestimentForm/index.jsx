@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useInvestiments } from "../../hooks/useInvestiments"
-import { Button } from "../Button"
+import { ButtonPrimary, ButtonWarning } from "../Button"
+import "./styles.css"
 
 export default function InvestimentForm() {
   const [, setInvestiments] = useInvestiments()
@@ -38,41 +39,54 @@ export default function InvestimentForm() {
     setValorInvested(1)
   }
 
+  function handleCleatInvestiments() {
+    setInvestiments([])
+  }
+
   return (
-    <>
-      <h2>Invista em um Ativo</h2>
-      <form action="" onSubmit={handleAddInvestiment}>
-        <div>
-          <label htmlFor="">Ativo</label>
-          <input
-            type="text"
-            className=""
-            value={codAtivo}
-            onChange={e => setCodAtivo(e.target.value)}
-          />
+    <form onSubmit={handleAddInvestiment} className="invest-form">
+      <div className="invest-form-header">
+        <h2 className="invest-form-title">Invista em um Ativo</h2>
+        <ButtonWarning
+          onClick={handleCleatInvestiments}
+        >
+          Limpar Investimentos
+        </ButtonWarning>
+      </div>
+      <div className="invest-form-body">
+        <div className="row">
+          <div className="invest-form-group">
+            <label for="">Ativo</label>
+            <input
+              type="text"
+              value={codAtivo}
+              onChange={e => setCodAtivo(e.target.value)}
+              placeholder="Código do Ativo"
+            />
+          </div>
+          <div className="invest-form-group">
+            <label for="">Valor a Investir</label>
+            <input
+              type="number"
+              value={valorInvested}
+              onChange={e => setValorInvested(e.target.value)}
+              placeholder="Valor"
+            />
+          </div>
+          <div className="invest-form-group">
+            <label for="">Quantidade</label>
+            <input
+              type="number"
+              value={quantidadeInvested}
+              onChange={e => setQuantidadeInvested(e.target.value)}
+              placeholder="Quantidade a comprar"
+            />
+          </div>
         </div>
-        <div>
-          <label htmlFor="">QuantidadeInvested</label>
-          <input
-            type="number"
-            className=""
-            value={quantidadeInvested}
-            onChange={e => setQuantidadeInvested(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="">ValorInvested</label>
-          <input
-            type="number"
-            className=""
-            value={valorInvested}
-            onChange={e => setValorInvested(e.target.value)}
-          />
-        </div>
-        <Button type="submit" backgroundColor={"green"} color={"white"}>
+        <ButtonPrimary type="submit" className="btn btn-primary">
           Investir
-        </Button>
-      </form>
-    </>
+        </ButtonPrimary>
+      </div>
+    </form>
   )
 }

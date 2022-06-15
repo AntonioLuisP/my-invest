@@ -1,0 +1,73 @@
+/* lista de cards */
+.invest-cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* card */
+.invest-card {
+    width: 24%;
+    border: 1px solid hsl(215, 32%, 27%);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.invest-card-header,
+.invest-card-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    word-wrap: break-word;
+}
+
+.invest-card-title {
+    font-weight: 700;
+    font-size: 2.5rem;
+    word-wrap: break-word;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.invest-card-value,
+.invest-card-quantidade {
+    font-weight: 700;
+    font-size: 1.5rem;
+    word-wrap: break-word;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.inves-card-quantidade {
+    font-size: 2rem;
+}
+
+.invest-card-value::after {
+    content: " reais";
+    text-transform: lowercase;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.invest-card-quantidade::after {
+    content: " qtd";
+    text-transform: lowercase;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+/* mobile */
+@media screen and (max-width: 800px) {
+    .invest-cards {
+        flex-direction: column;
+    }
+
+    .invest-card {
+        width: 100%;
+    }
+}

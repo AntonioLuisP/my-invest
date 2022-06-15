@@ -4,12 +4,13 @@
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
+body{
+  background-color: hsl(216, 41%, 45%);
+}
 
-body {
+#root{
   width: 100%;
   height: 100vh;
-  background-color: #87a8da;
-  padding: 2rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
